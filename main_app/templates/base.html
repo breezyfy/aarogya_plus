@@ -7,7 +7,7 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>ProClinic-Bootstrap4 Hospital Admin</title>
+	<title>AarogyaPlus-Clinic Health Management System</title>
 	<!-- Fav  Icon Link -->
 	<link rel="shortcut icon" type="image/png" href="{% static 'images/fav.png' %}">
 	<!-- Bootstrap core CSS -->
@@ -30,14 +30,7 @@
 
 <body>
 	
-    <!-- Pre Loader -->
-	<div class="loading">
-		<div class="spinner">
-			<div class="double-bounce1"></div>
-			<div class="double-bounce2"></div>
-		</div>
-	</div>
-	<!--/Pre Loader -->
+
     
     <div class="wrapper">		
 		<!-- Page Content -->
@@ -138,6 +131,7 @@
                                     <a class="dropdown-item" href="doctors.html">All Doctors</a>
                                     <a class="dropdown-item" href="about-doctor.html">Doctor Details</a>
                                 </div>
+
                             </li>
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"
@@ -173,7 +167,7 @@
 					<div class="col-md-6">
 						<ol class="breadcrumb">
 							<li class="breadcrumb-item">
-								<a href="index.html">
+								<a href="base.html">
 									<span class="ti-home"></span>
 								</a>
 							</li>
@@ -236,7 +230,7 @@
 					<div class="col-md-6">
 						<div class="widget-area-2 proclinic-box-shadow">
 							<h3 class="widget-title">Appointments Year by Year</h3>
-							
+							<div id="lineMorris" class="chart-home"></div>
 						</div>
 					</div>
 					<!-- /Widget Item -->
@@ -244,7 +238,7 @@
 					<div class="col-md-6">
 						<div class="widget-area-2 proclinic-box-shadow">
 							<h3 class="widget-title"> Patients Year by Year</h3>
-							
+							<div id="barMorris" class="chart-home"></div>
 						</div>
 					</div>
 					<!-- /Widget Item -->
@@ -341,7 +335,7 @@
 					<div class="col-sm-6">
 						<div class="widget-area-2 proclinic-box-shadow">
 							<h3 class="widget-title">Appointments Status</h3>
-							
+							<div id="donutMorris" class="chart-home"></div>
 						</div>
 					</div>
 					<!-- /Widget Item -->
