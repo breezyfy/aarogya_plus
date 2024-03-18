@@ -50,6 +50,14 @@ body {
 	border: 0;
 	width: 100%;
 	background-image: url('aarogya_logo.png');
+	background-size: cover;
+	background-position: center;
+}
+
+.back-img{
+	background-image: url('aarogya_logo.png');
+	background-size: cover;
+	background-position: center;
 }
 
 h1,
@@ -198,6 +206,8 @@ form .row>[class^=col] {
     padding-bottom: 15px;
 	transition: all 0.3s;
 	width: 100%;
+	background-image: url('aarogya_logo.png');
+
 }
 .text-muted {
 	color: #6c757d!important;

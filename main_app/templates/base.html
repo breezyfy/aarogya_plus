@@ -30,16 +30,18 @@
 
 <body>
 	
-
-    
+	<div class="back-img">
+    	<img src="{% static 'images/aarogya_logo.png' %}">
+	</div>
     <div class="wrapper">		
 		<!-- Page Content -->
 		<div id="content">
+
 			<!-- Top Navigation -->
 			<div class="container top-brand">
 				<nav class="navbar navbar-default">			
 					<div class="navbar-header">
-						<div class="sidebar-header"> <a href="index.html"><img src="{% static 'images/aarogya_logo.png' %}" class="logo" alt="logo"></a>
+						<div class="sidebar-header"> <a href="base.html"><img src="{% static 'images/aarogya_logo.png' %}" class="logo" alt="logo"></a>
 						</div>
 					</div>
 					<ul class="nav justify-content-end">
@@ -118,7 +120,7 @@
                                 <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"
                                 aria-expanded="false"><span class="ti-wheelchair"></span> Patients</a>
                                 <div class="dropdown-menu">
-                                    <a class="dropdown-item" href="add-patient.html">Add Patient</a>
+                                    <a class="dropdown-item" href="add_patient.html">Add Patient</a>
                                     <a class="dropdown-item" href="patients.html">All Patients</a>
                                     <a class="dropdown-item" href="about-patient.html">Patient Details</a>
                                 </div>
@@ -394,6 +396,26 @@
 			</div>
 			<!-- /Main Content -->
 
+			{% block content %}
+
+
+
+			{% endblock %}
+			<!--Copy Rights-->
+			<div class="container">
+				<div class="d-sm-flex justify-content-center">
+				  <span class="text-muted text-center d-block d-sm-inline-block">Copyright © 2018 <a href="http://www.konnectplugins.com/" target="_blank">konnectcode</a>. All rights reserved.</span>
+				</div>
+			</div>
+			<!-- /Copy Rights-->
+		</div>
+		<!-- /Page Content -->
+	</div>
+	<!-- Back to Top -->
+	<a id="back-to-top" href="#" class="back-to-top">
+		<span class="ti-angle-up"></span>
+	</a>
+
 <!-- /Back to Top -->
 	<!-- Jquery Library-->
 	<script src="{% static 'js/jquery-3.2.1.min.js' %}"></script>
@@ -410,4 +432,4 @@
 	<script src="{% static 'js/custom.js' %}"></script>
 </body>
 
-</html>=
+</html>
