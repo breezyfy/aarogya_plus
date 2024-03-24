@@ -27,3 +27,13 @@ def ADD_PATIENT(request):
   
 
     return render(request,'patients/add_patient.html')
+
+def DASH(request):
+    return render(request,'dashboard.html')
+
+def LOGIN(request):
+    return render(request,'login.html')
+
+def REG(request):
+    return render(request,'signup.html')
+

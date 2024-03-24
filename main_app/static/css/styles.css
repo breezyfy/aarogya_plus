@@ -49,15 +49,14 @@ body {
 	color: #3e5569;
 	border: 0;
 	width: 100%;
-	background-image: url('aarogya_logo.png');
 	background-size: cover;
-	background-position: center;
+	background-position:center;
 }
 
-.back-img{
-	background-image: url('aarogya_logo.png');
-	background-size: cover;
-	background-position: center;
+.back-img {
+    background-image: url("{% static 'images/backimg.jpg' %}");
+    background-size: cover; 
+    background-position: center;
 }
 
 h1,
@@ -202,11 +201,11 @@ form .row>[class^=col] {
 	padding: 5px 10px;
 }
 #content {
-	padding-top: 5px;
-    padding-bottom: 15px;
+	padding-top: 0px;
+    padding-bottom: 0px;
 	transition: all 0.3s;
 	width: 100%;
-	background-image: url('aarogya_logo.png');
+	height: auto;
 
 }
 .text-muted {
