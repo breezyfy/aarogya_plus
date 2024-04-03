@@ -276,6 +276,9 @@ div[class*="col-"] div[class*="col-"]{
 
 .auth-bg {
 	background: #ededed;
+	background-image: url('images/backimg.jpg');
+    background-size: cover;
+    background-position: center;
 }
 
 .auth-box {
@@ -462,7 +465,7 @@ table.dataTable th:first-child{
 #switcher .theme-default {
 	width: 25px;
 	height: 25px;
-	background: #3CB371;
+	background:#4891ff;
 	margin: 15px 10px;
 	position: absolute;
 	border-radius: 50%;
@@ -472,7 +475,7 @@ table.dataTable th:first-child{
 #switcher .theme-blue {
 	width: 25px;
 	height: 25px;
-	background: #4477C5;
+	background: #4891ff;
 	margin: 15px 10px;
 	border-radius: 50%;
 	position: absolute;

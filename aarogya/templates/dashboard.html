@@ -1,6 +1,42 @@
 {% extends "base.html" %}
 {% block content %}
-
+{% if not request.user.is_staff %}
+			<!-- Main Content -->
+			<div class="container">				
+				<div class="row">
+					<div class="col-md-12">
+						<div class="widget-area-2 card-area">
+							<h3 class="widget-title">NAMASTE !! Aarogya-Saathi</h3>
+							<div class="row">
+								<!-- Item-->
+								<div class="col-sm-6">
+									<div class="card">
+										<img class="card-img-top" src="static/images/card-1.jpg" alt="Card image">
+										<div class="card-body">
+											<h4 class="card-title">Patient</h4>
+											<p class="card-text">Get Started by filling up the patient form and then book your Appointment. Click the button below to continue.</p>
+											<a class="btn btn-primary btn-sm" href="{%url 'add_patient'%}">Go somewhere
+											</a>
+										</div>
+									</div>
+								</div>
+								<!-- /Item-->
+								<!-- Item-->
+								<div class="col-sm-6">
+									<div class="card smt-2 mb-3">
+										<div class="card-body">
+											<h4 class="card-title">About AarogyaPlus</h4>
+											<p class="card-text">"AarogyaPlus is your trusted partner on the journey to wellness. We are dedicated to providing comprehensive healthcare services with a focus on holistic well-being. Our expert team is committed to delivering personalized care and innovative solutions to empower you to lead a healthier, happier life. At AarogyaPlus, your health is our priority."</p>
+											</a>
+										</div>
+										<img class="card-img-bottom" src="static/images/card-2.jpg" alt="Card image">
+									</div>
+								</div>
+								<!-- /Item-->
+							</div>
+						</div>
+{% endif %}
+{% if request.user.is_staff %}
 <!-- /Menu -->
 			<!-- Breadcrumb -->
 			<!-- Page Title -->
@@ -238,4 +274,5 @@
 
 			</div>
 			<!-- /Main Content -->
+{% endif %}
 {% endblock %}

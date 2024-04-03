@@ -2,7 +2,7 @@ from django.core.mail import EmailMessage
 from django.shortcuts import render,redirect
 from app.models import Patient
 from app.models import Doctor
-from django.contrib.auth.models import User
+from django.contrib.auth.models import User,Group
 from django.contrib import messages
 from django.contrib.auth import authenticate,login 
 from main_app import settings
@@ -13,11 +13,19 @@ from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
 from django.utils.encoding import force_bytes, force_str
 from . tokens import generate_token
 from app.models import Appointment
+from .decorators import allowed_users, admin_only
+from django.contrib.auth.decorators import login_required
+
+
 
 
 
 def BASE(request):
     return render(request,'base.html')
+
+def MAIN(request):
+    return render(request,'main.html')
+
 
 def ADD_PATIENT(request):
     if request.method == "POST":
@@ -45,11 +53,12 @@ def ADD_PATIENT(request):
 
     return render(request,'patients/add_patient.html')
 
+@allowed_users(allowed_roles=['admins'])
 def Patient_info(request):
     patients = Patient.objects.all()
     return render(request,'patients/patient_list.html',{'patients': patients})
 
-
+@allowed_users(allowed_roles=['admins'])
 def ADD_DOCTOR(request):
     if request.method == "POST":
 
@@ -77,6 +86,7 @@ def ADD_DOCTOR(request):
     
     return render(request,'doctors/add_doctor.html')
 
+@allowed_users(allowed_roles=['admins'])
 def Doctor_info(request):
     doctors = Doctor.objects.all()
     return render(request,'doctors/doctor_list.html',{'doctors': doctors})
@@ -102,12 +112,13 @@ def ADD_APT(request):
     
     return render(request,'appointments/add_appointment.html')
 
-
+@allowed_users(allowed_roles=['admins'])
 def Appointment_info(request):
     appointment = Appointment.objects.all()
     return render(request,'appointments/appointment_list.html',{'appointment': appointment})
 
-
+@login_required(login_url='login.html')
+@admin_only
 def DASH(request):
     return render(request,'dashboard.html')
 
@@ -123,11 +134,11 @@ def Login(request):
             login(request, user)
             return render(request, "dashboard.html")
         
-        
-      
-
 
     return render(request,'login.html')
+    
+
+
 
 def signup(request):
 
@@ -150,10 +161,12 @@ def signup(request):
         if pass1 != pass2:
             messages.error(request,"Passwords didn't match...Retry!!!")
 
+        group= Group.objects.get_or_create(name='customer')[0]
         myuser = User.objects.create_user(username,email,pass1)
         myuser.first_name= fname
         myuser.last_name= lname
         myuser.is_active = False
+        myuser.groups.add(group)
         myuser.save()
 
         messages.success(request,"Your Account is created succesfully!!")

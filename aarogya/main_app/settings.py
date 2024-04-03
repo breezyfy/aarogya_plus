@@ -138,4 +138,5 @@ STATICFILES_DIRS = [
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-
+razor_pay_key_id = 'rzp_test_2JlOmslRAoND06'
+key_secret = '60S4UQ0fmzugkpqNskvVlRkZ'
