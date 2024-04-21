@@ -9,64 +9,55 @@
         <div class="col-md-12">
             <div class="widget-area-2 proclinic-box-shadow">
                 <h3 class="widget-title">Add Payment</h3>
-                <form>
+                <form method="POST" action="{% url "add_payment" %}">
+                    {% csrf_token %}
                     <div class="form-row">
                         <div class="form-group col-md-6">
-                            <label for="patient-id">Patient ID</label>
-                            <input type="text" class="form-control" placeholder="Patient ID" id="patient-id" >
-                        </div>
-                        <div class="form-group col-md-6">
                             <label for="patient-name">Patient Name</label>
-                            <input type="text" class="form-control" placeholder="Patient Name" id="patient-name">
+                            <select class="form-control" name="p">
+                                {% for i in p%}
+                                <option value="{{i.patient_name}}">{{i.patient_name}}</option>
+                                {% endfor %}
+                            </select>
                         </div>
                         <div class="form-group col-md-6">
                             <label for="department">Department</label>
-                            <select class="form-control" id="department">
-                                <option>Neuro</option>
-                                <option>Ortho</option>
-                                <option>General</option>
+                            <select class="form-control" name="s">
+                                {% for i in s%}
+                                <option value="{{i.specs}}">{{i.specs}}</option>
+                                {% endfor %}
                             </select>
                         </div>
                         <div class="form-group col-md-6">
                             <label for="doctor-name">Doctor Name</label>
-                            <input type="text" placeholder="Doctor Name" class="form-control" id="doctor-name">
+                            <select class="form-control" name="d">
+                                {% for i in d%}
+                                <option value="{{i.doctor_name}}">{{i.doctor_name}}</option>
+                                {% endfor %}
+                            </select>
                         </div>
                         <div class="form-group col-md-6">
-                            <label for="adminssion-date">Admission Date</label>
-                            <input type="date" placeholder="Adminssion Date" class="form-control" id="adminssion-date">
-                        </div>	
-                        <div class="form-group col-md-6">
-                            <label for="discharge-date">Discharge Date</label>
-                            <input type="date" placeholder="Discharge Date" class="form-control" id="discharge-date">
-                        </div>	
+                            <label for="adminssion-date">Date</label>
+                            <input type="date" name="date" placeholder="Adminssion Date" class="form-control" id="adminssion-date">
+                        </div>		
                         <div class="form-group col-md-12">
                             <h4>Services</h4>										
                         </div>
                         <div class="form-group col-md-6">
                             <label for="service-name">Service Name</label>
-                            <input type="text" placeholder="Service Name" class="form-control" id="service-name">
+                            <input type="text" name="services" placeholder="Service Name" class="form-control" id="service-name">
                         </div>	
                         <div class="form-group col-md-6">
                             <label for="treatment-cost">Cost of Treatment</label>
-                            <input type="text" placeholder="Cost of Treatment" class="form-control" id="treatment-cost">
-                        </div>
-                        <div class="form-group col-md-12">
-                            <button type="button" class="btn btn-outline-success"><span class="ti-plus"></span> Add Service</button>										
-                        </div>
+                            <input type="text"  name="amount" placeholder="Cost of Treatment" class="form-control" id="treatment-cost">
+                        </div>                 
                         <div class="form-group col-md-12">
                             <h4>Payment</h4>										
                         </div>
-                        <div class="form-group col-md-3">
-                            <label for="discount">Discount (%)</label>
-                            <input type="text" placeholder="Discount" class="form-control" id="discount">
-                        </div>	
-                        <div class="form-group col-md-3">
-                            <label for="advance-paid">Advance Paid</label>
-                            <input type="text" placeholder="Advance Paid" class="form-control" id="advance-paid">
-                        </div>
+                        
                         <div class="form-group col-md-3">
                             <label for="payment-type">Payment Type</label>
-                            <select class="form-control" id="payment-type">
+                            <select class="form-control" name="pay_type" id="payment-type">
                                 <option>Check</option>
                                 <option>Card</option>
                                 <option>Cash</option>
@@ -74,38 +65,37 @@
                         </div>	
                         <div class="form-group col-md-3">
                             <label for="card-check">Card/Check No</label>
-                            <input type="text" placeholder="Card/Check No" class="form-control" id="card-check">
-                        </div>																	
-                        <div class="form-check col-md-12 mb-2">
-                            <div class="text-left">
-                                <div class="custom-control custom-checkbox">
-                                    <input class="custom-control-input" type="checkbox" id="ex-check-2">
-                                    <label class="custom-control-label" for="ex-check-2">Please Confirm</label>
-                                </div>
-                            </div>
+                            <input type="text" placeholder="Card/Check No" class="form-control" name="cardcheck_no" id="card-check">
                         </div>
+                        <script src="https://checkout.razorpay.com/v1/checkout.js"></script>		
                         <div class="form-group col-md-6 mb-3">
                             <button type="submit" class="btn btn-primary btn-lg">Submit</button>
                         </div>
                     </div>
+                    												
                 </form>
-                <!-- Alerts-->
-                <div class="alert alert-success alert-dismissible fade show" role="alert">
-                    <strong>Successfully Done!</strong> Payment added
-                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                        <span aria-hidden="true">×</span>
-                    </button>
-                </div>
-                <div class="alert alert-warning alert-dismissible fade show" role="alert">
-                    <strong>Holy guacamole!</strong> You should check in on some of those fields below.
-                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                        <span aria-hidden="true">×</span>
-                    </button>
-                </div>
-                <!-- /Alerts-->
+                <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+                <form  name="myForm" method="POST" action="https://www.example.com/payment/success/">
+                    <script
+                        src="https://checkout.razorpay.com/v1/checkout.js"
+                        data-key="rzp_test_2JlOmslRAoND06" // Enter the Test API Key ID generated from Dashboard → Settings → API Keys
+                        data-amount=50000 // Amount is in currency subunits. Hence, 29935 refers to 29935 paise or ₹299.35.
+                        data-currency="INR"// You can accept international payments by changing the currency code. Contact our Support Team to enable International for your account
+                        data-order_id="{{payments.pay_id}}"// Replace with the order_id generated by you in the backend.
+                        data-buttontext="Pay with Razorpay"
+                        data-name="AarogyaPlus"
+                        data-description="Doctor fees"
+                        data-image="https://example.com/your_logo.jpg"
+                        data-prefill.name="Pritam"
+                        data-prefill.email="Aarogya.helpdesk@gmail.com"
+                        data-theme.color="#F37254"
+                    ></script>
+                    <input type="hidden" custom="Hidden Element" name="hidden"/>
+                </form>
             </div>
         </div>
         <!-- /Widget Item -->
+       
     </div>
 </div>
 <!-- /Main Content -->

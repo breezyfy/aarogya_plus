@@ -1,0 +1,104 @@
+{% extends "base.html" %}
+{% block content %}
+			<!-- Main Content -->
+			<div class="container">
+				<div class="row">
+						<div class="col-md-12">
+							<div class="widget-area-2 proclinic-box-shadow pb-3">
+								<!-- Invoice Head -->
+								<div class="row ">
+									<div class="col-sm-6 mb-5">
+										<h5 class="proclinic-text-color">AarogyaPlus</h5>
+										<span>Your Aarogya is our Priority</span>
+										<br>
+		
+										<br>
+										<span>Panvelkar Optima, Katrap</span>
+										<br>
+										<span>[Thane,MAHARASHTRA 421503]</span>
+										<br>
+										<span class="pr-2">Phone: +91 1234567890</span>
+										<span>Email:{% url "aarogya.helpdesk@gmail.com"%}</span>
+									</div>
+									<div class="col-sm-6 text-md-right mb-5">
+										<h3>INVOICE</h3>
+										<br>
+										<br>
+										<span>Invoice #{{payments.pay_id}}</span>
+										<br>
+										<span>Date:{{payments.date}}</span>
+									</div>
+								</div>
+								<!-- /Invoice Head -->
+								<!-- Invoice Content -->
+								<div class="row">
+									<div class="col-sm-6 mb-5">
+										<h6 class="proclinic-text-color">TO:</h6>
+										<span>{{payments.p}}</span>
+										<br>
+									</div>
+									<div class="col-sm-12 mb-5">
+										<strong class="proclinic-text-color">COMMENTS OR SPECIAL INSTRUCTIONS:</strong>
+									</div>
+									<div class="col-sm-12">
+										<table class="table table-bordered table-striped table-invioce">
+											<thead>
+												<tr>
+													<th scope="col">#</th>
+													<th scope="col">Doctor</th>
+													<th scope="col">Department</th>
+													<th scope="col">Services</th>
+													<th scope="col">Pay-type</th>
+													<th scope="col">Amount</th>
+												</tr>
+											</thead>
+											<tbody>
+                                                {%for payments in payments%}
+												<tr>
+													<th scope="row">1</th>
+													<td>{{payments.d}}</td>
+													<td>{{payments.s}}</td>
+													<td>{{payments.services}}</td>
+													<td>{{payments.pay_type}}</td>
+													<td>Rs.{{payments.amount}}</td>
+												</tr>
+                                                {%endfor%}
+											</tbody>
+										</table>
+									</div>
+									<div class="col-sm-4 ml-auto">
+										<table class="table table-bordered table-striped">
+											<tbody>
+                                                {%for payments in payments%}
+												<tr>
+													<td>
+														<strong>GRAND TOTAL</strong>
+													</td>
+													<td>
+														<strong>Rs.{{payments.amount}}</strong>
+													</td>
+												</tr>
+                                                {%endfor%}
+											</tbody>
+										</table>
+									</div>
+		
+									<div class="col-sm-12">
+										<div class="border p-4">
+											<strong>Note:</strong>
+											Please note that  the payment amount is subject to change due to any applicable taxes or fees. 
+                                            Please make sure to print or save this receipt.
+											<br>
+											<br>
+											<strong class="f12">Thank You for trusting us to serve you</strong>
+										</div>
+									</div>
+		
+								</div>
+								<!-- /Invoice Content -->
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- /Main Content -->
+{% endblock  %}

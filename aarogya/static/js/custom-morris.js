@@ -1,29 +1,28 @@
 (function ($) {
   "use strict"; // Start of use strict
   //line Morris
-  var lineMorris = new Morris.Line({
-    element: 'lineMorris',
-    resize: true,
-    data: [
-      { y: '2016 Q1', Appointments: 20 },
-      { y: '2016 Q2', Appointments: 15 },
-      { y: '2016 Q3', Appointments: 34 },
-      { y: '2016 Q4', Appointments: 7 },
-      { y: '2017 Q1', Appointments: 31 },
-      { y: '2017 Q2', Appointments: 18 },
-      { y: '2017 Q3', Appointments: 70 },
-      { y: '2017 Q4', Appointments: 32 },
-      { y: '2018 Q1', Appointments: 15 },
-      { y: '2018 Q2', Appointments: 53 }
-    ],
-    xkey: 'y',
-    ykeys: ['Appointments'],
-    labels: ['Appointments'],
-    gridLineColor: '#eef0f2',
-    lineColors: ['#E57498'],
-    lineWidth: 2,
-    hideHover: 'auto'
+  const morris_data = [];
+
+// Loop through the patient_data context variable and add each item to the morris_data array
+for (let item of patient_data) {
+  morris_data.push({
+    y: item.month,
+    patients: item.id__count
   });
+}
+
+// Initialize the line chart
+const lineMorris = new Morris.Line({
+  element: 'lineMorris',
+  data: morris_data,
+  xkey: 'y',
+  ykeys: ['Patients'],
+  labels: ['Patients'],
+  gridLineColor: '#eef0f2',
+  lineColors: ['#E57498'],
+  lineWidth: 2,
+  hideHover: 'auto'
+});
   //barmorris
   var ctx = document.getElementById("barMorris");
   if (ctx === null) return;
@@ -65,9 +64,9 @@
   // morris donut charts
   if($("#donutMorris").length == 1){
    var $donutData = [
-    { label: "Pending", value: 30 },
-    { label: "Completed", value: 29 },
-    { label: "Cancelled", value: 45 }
+    { label: "patients", value: 1 },
+    { label: "appointments", 1},
+    { label: "doctors", value:1}
   ];
   Morris.Donut({
     element: 'donutMorris',

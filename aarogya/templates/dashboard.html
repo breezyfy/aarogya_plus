@@ -11,11 +11,11 @@
 								<!-- Item-->
 								<div class="col-sm-6">
 									<div class="card">
-										<img class="card-img-top" src="static/images/card-1.jpg" alt="Card image">
+										<img class="card-img-top" src="static/images/card1.jpeg" alt="Card image">
 										<div class="card-body">
 											<h4 class="card-title">Patient</h4>
 											<p class="card-text">Get Started by filling up the patient form and then book your Appointment. Click the button below to continue.</p>
-											<a class="btn btn-primary btn-sm" href="{%url 'add_patient'%}">Go somewhere
+											<a class="btn btn-primary btn-sm" href="{%url 'add_patient'%}">Get started
 											</a>
 										</div>
 									</div>
@@ -29,7 +29,7 @@
 											<p class="card-text">"AarogyaPlus is your trusted partner on the journey to wellness. We are dedicated to providing comprehensive healthcare services with a focus on holistic well-being. Our expert team is committed to delivering personalized care and innovative solutions to empower you to lead a healthier, happier life. At AarogyaPlus, your health is our priority."</p>
 											</a>
 										</div>
-										<img class="card-img-bottom" src="static/images/card-2.jpg" alt="Card image">
+										<img class="card-img-bottom" src="static/images/card2.jpeg" alt="Card image">
 									</div>
 								</div>
 								<!-- /Item-->
@@ -70,8 +70,8 @@
 							</div>
 							<div class="widget-right">
 								<h4 class="wiget-title">Patients</h4>
-								<span class="numeric color-red">0</span>
-								<p class="inc-dec mb-0"><span class="ti-angle-up"></span> </p>
+								<span class="numeric color-red">{{patientcount}}</span>
+								<p class="inc-dec mb-0"></span> </p>
 							</div>
 						</div>
 					</div>
@@ -83,9 +83,9 @@
 								<span class="ti-bar-chart"></span>
 							</div>
 							<div class="widget-right">
-								<h4 class="wiget-title">Appointments</h4>
-								<span class="numeric color-green">0</span>
-								<p class="inc-dec mb-0"><span class="ti-angle-down"></span> </p>
+								<h4 class="wiget-title">Doctors</h4>
+								<span class="numeric color-green">{{doctorcount}}</span>
+								<p class="inc-dec mb-0"></span> </p>
 							</div>
 						</div>
 					</div>
@@ -97,9 +97,9 @@
 								<span class="ti-money"></span>
 							</div>
 							<div class="widget-right">
-								<h4 class="wiget-title">Total Revenue</h4>
-								<span class="numeric color-yellow">0</span>
-								<p class="inc-dec mb-0"><span class="ti-angle-up"></span></p>
+								<h4 class="wiget-title">Appointments</h4>
+								<span class="numeric color-yellow">{{appcount}}</span>
+								<p class="inc-dec mb-0"></span></p>
 							</div>
 						</div>
 					</div>
@@ -112,6 +112,7 @@
 						<div class="widget-area-2 proclinic-box-shadow">
 							<h3 class="widget-title">Appointments Year by Year</h3>
 							<div id="lineMorris" class="chart-home"></div>
+
 						</div>
 					</div>
 					<!-- /Widget Item -->

@@ -13,18 +13,28 @@
                     {% csrf_token %}
                     <div class="form-row">
                         <div class="form-group col-md-6">
-                            <label for="department">Department</label>
-                            <select class="form-control" id="department" name="dept">
-                                <option>Neuro</option>
-                                <option>Ortho</option>
-                                <option>General</option>
-                                <option>Maternity</option>
-                                <option>Cardio/Heart</option>
+                            <label for="department">Service</label>
+                            <select class="form-control" name="serv">
+                                {% for i in serv%}
+                                <option value="{{i.specs}}">{{i.specs}}</option>
+                                {% endfor %}
                             </select>
                         </div>
                         <div class="form-group col-md-6">
                             <label for="doctor-name">Doctor Name</label>
-                            <input type="text" placeholder="Doctor Name" class="form-control" id="doctor-name" name="doc_name">
+                            <select class="form-control" name="doc">
+                                {% for i in doc%}
+                                <option value="{{i.doctor_name}}">{{i.doctor_name}}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="doctor-name">Patient Name</label>
+                            <select class="form-control" name="pat">
+                                {% for i in pat%}
+                                <option value="{{i.patient_name}}">{{i.patient_name}}</option>
+                                {% endfor %}
+                            </select>
                         </div>
                         <div class="form-group col-md-6">
                             <label for="appointment-date">Appointment Date</label>
@@ -48,19 +58,7 @@
                             <label for="problem">Problem</label>
                             <textarea placeholder="Problem" class="form-control" id="problem" name="problem" rows="3"></textarea>
                         </div>
-                                                            
-                        <div class="form-check col-md-12 mb-2">
-                            <div class="text-left">
-                                <div class="custom-control custom-checkbox">
-                                    <input class="custom-control-input" type="checkbox" id="ex-check-2">
-                                    <label class="custom-control-label" for="ex-check-2">Please Confirm</label>
-                                </div>
-                            </div>
-                        </div>
-                        <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
-                        <div class="form-group col-md-6 mb-3">
-                            <a class="btn btn-info btn-lg" href="{%url 'add_payment'%}">Make Payment</button>
-                        </div>
+    
                         <div class="form-group col-md-6 mb-3">
                             <button type="submit" class="btn btn-primary btn-lg">Submit</button>
                         </div>
@@ -72,45 +70,5 @@
     </div>
 </div>
 <!-- /Main Content -->
-<script>
-    var options = {
-        "key": "YOUR_KEY_ID", // Enter the Key ID generated from the Dashboard
-        "amount": "50000", // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
-        "currency": "INR",
-        "name": "Acme Corp",
-        "description": "Test Transaction",
-        "image": "https://example.com/your_logo",
-        "order_id": "order_IluGWxBm9U8zJ8", //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
-        "handler": function (response){
-            alert(response.razorpay_payment_id);
-            alert(response.razorpay_order_id);
-            alert(response.razorpay_signature)
-        },
-        "prefill": {
-            "name": "Gaurav Kumar",
-            "email": "gaurav.kumar@example.com",
-            "contact": "9000090000"
-        },
-        "notes": {
-            "address": "Razorpay Corporate Office"
-        },
-        "theme": {
-            "color": "#3399cc"
-        }
-    };
-    var rzp1 = new Razorpay(options);
-    rzp1.on('payment.failed', function (response){
-            alert(response.error.code);
-            alert(response.error.description);
-            alert(response.error.source);
-            alert(response.error.step);
-            alert(response.error.reason);
-            alert(response.error.metadata.order_id);
-            alert(response.error.metadata.payment_id);
-    });
-    document.getElementById('rzp-button1').onclick = function(e){
-        rzp1.open();
-        e.preventDefault();
-    }
-    </script>
+
 {% endblock  %}

@@ -26,6 +26,7 @@
 	<link rel="stylesheet" href="{% static 'css/jquery-jvectormap.css' %}">
 
 	<script src="{% static 'js/modernizr.min.js' %}"></script>
+	
 </head>
 
 <body>
@@ -81,7 +82,7 @@
 							</a>
 							<div class="dropdown-menu proclinic-box-shadow2 profile animated flipInY">
 								<h5>User</h5>
-									<span class="ti-power-off"></span> Logout</a>
+									<a  href={% url "login" %}><span class="ti-power-off"></span> Logout</a>
 							</div>
 						</li>
 					</ul>
@@ -135,9 +136,8 @@
                                 <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"
                                 aria-expanded="false"><span class="ti-money"></span> Payments</a>
                                 <div class="dropdown-menu">
-                                    <a class="dropdown-item" href="add-payment.html">Add Payment</a>
-                                    <a class="dropdown-item" href="payments.html">All Payments</a>
-                                    <a class="dropdown-item" href="about-payment.html">Payment Invoice</a>
+                                    <a class="dropdown-item" href={% url "add_payment" %}>Add Payment</a>
+                                    <a class="dropdown-item" href={% url "payment_list" %}>All Payments</a>
                                 </div>
                             </li>
                             {% endif%}
@@ -154,7 +154,7 @@
 			<!--Copy Rights-->
 			<div class="container">
 				<div class="d-sm-flex justify-content-center">
-				  <span class="text-muted text-center d-block d-sm-inline-block">Copyright © All rights reserved.</span>
+				  <span class="text-muted text-center d-block d-sm-inline-block">AarogyaPlus <br>Copyright © All rights reserved.<br>Connect us :<br>PH: +91 7972797102 <br> Email: aarogya.helpdesk@gmail.com </span>
 				</div>
 			</div>
 			<!-- /Copy Rights-->

@@ -13,15 +13,11 @@
                     <table id="tableId" class="table table-bordered table-striped">
                         <thead>
                             <tr>
-                                <th class="no-sort">
-                                    <div class="custom-control custom-checkbox">
-                                        <input class="custom-control-input" type="checkbox" id="select-all">
-                                        <label class="custom-control-label" for="select-all"></label>
-                                    </div>
-                                </th>
+                
                                 <th>Appointment No</th>
                                 <th>Doctor</th>
-                                <th>Department</th>
+                                <th>Patient</th>
+                                <th>Service</th>
                                 <th>Date reported</th>
                                 <th>time slot</th>
                                 <th>Problem</th>
@@ -29,20 +25,16 @@
                             </tr>
                         </thead>
                         <tbody>
-                            {% for appointment in appointment %}
+                            {% for i in appointment %}
                             <tr>
-                                <td>
-                                    <div class="custom-control custom-checkbox">
-                                        <input class="custom-control-input" type="checkbox" id="1">
-                                        <label class="custom-control-label" for="1"></label>
-                                    </div>
-                                </td>
-                                <td>{{ appointment.Apt_no}}</td>
-                                <td>{{ appointment.doc_name}}</td>
-                                <td>{{ appointment.dept }}</td>
-                                <td>{{ appointment.apt_date}}</td>
-                                <td>{{ appointment.time_slot }}</td>
-                                <td>{{appointment.problem }}</td>
+                                
+                                <td>{{i.apt_id}}</td>
+                                <td>{{i.doc}}</td>
+                                <td>{{i.pat}}</td>
+                                <td>{{i.serv}}</td>
+                                <td>{{i.apt_date}}</td>
+                                <td>{{i.time_slot }}</td>
+                                <td>{{i.problem }}</td>
                                 <td>
                                     <span class="badge badge-success">Active</span>
                                 </td>
@@ -51,7 +43,7 @@
                         </tbody>
                     </table>
                     
-                    <!--Export links-->
+                    {% comment %} <!--Export links-->
                     <nav aria-label="Page navigation example">
                         <ul class="pagination justify-content-center export-pagination">
                             <li class="page-item">
@@ -68,9 +60,7 @@
                             </li>
                         </ul>
                     </nav>
-                    <!-- /Export links-->
-                    <button type="button" class="btn btn-danger mt-3 mb-0"><span class="ti-trash"></span> DELETE</button>
-                    <button type="button" class="btn btn-primary mt-3 mb-0"><span class="ti-pencil-alt"></span> EDIT</button>
+                    {% endcomment %}
                 </div>
             </div>
         </div>

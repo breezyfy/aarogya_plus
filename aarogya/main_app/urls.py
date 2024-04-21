@@ -33,4 +33,8 @@ urlpatterns = [
     path('Appointment/add',views.ADD_APT,name='add_appointment'),
     path('Appointment/info',views.Appointment_info,name='appointment_list'),
     path('main', views.MAIN,name='main'),
-]
+    path('Payment/add',views.ADD_PAYMENT,name='add_payment'),
+    path('Payment/info',views.Payment_info,name='payment_list'),
+    path('patients-report/<str:format>/', views.patients_report, name='patients_report'),
+    #path('generate_invoice/<int:payment_id>/',views.payment_invoice, name='pay_invoice'),
+    ]
